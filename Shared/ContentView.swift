@@ -6,14 +6,41 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
+    @State private var isLoggedIn = true
+    
+    init() {
+            _isLoggedIn = State(initialValue: Auth.auth().currentUser != nil)
+        }
+    
     var body: some View {
+            if isLoggedIn {
+                MainTabView()
+            } else {
+                IniciarSesionView()
+            }
+        }
+    
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
+}
+
+
+struct MainTabView: View {
+    var body: some View {
+        
         TabView{
             NavigationView {
-                
-                IniciarSesionView()
-                    .navigationBarHidden(true)
+                VStack {
+                    CustomTitleView(title: "Partidos")
+                }
+                .navigationBarHidden(true)
             }
             .tabItem {
                 Image(systemName: "sportscourt.fill")
@@ -70,15 +97,9 @@ struct ContentView: View {
         .accentColor(Color("Primary"))
         .background(Color("Primary"))
         .navigationBarHidden(true)
-        
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
 
 struct CustomTitleView: View {
     let title: String

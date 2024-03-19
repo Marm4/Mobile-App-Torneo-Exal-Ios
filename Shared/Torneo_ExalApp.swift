@@ -1,17 +1,30 @@
-//
-//  Torneo_ExalApp.swift
-//  Shared
-//
-//  Created by Marco on 17/03/2024.
-//
-
 import SwiftUI
+import FirebaseCore
+import FirebaseAuth
+
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+  func application(_ application: UIApplication,
+                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    FirebaseApp.configure()
+
+    return true
+  }
+}
 
 @main
 struct Torneo_ExalApp: App {
-    var body: some Scene {
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
+   
+      var body: some Scene {
         WindowGroup {
+          NavigationView {
             ContentView()
+            
+          }
         }
-    }
+      }
 }
+
+
