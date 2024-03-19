@@ -1,0 +1,450 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A90564452BA7E72B007E7731 /* Torneo_ExalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90564322BA7E723007E7731 /* Torneo_ExalApp.swift */; };
+		A90564462BA7E72B007E7731 /* Torneo_ExalApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90564322BA7E723007E7731 /* Torneo_ExalApp.swift */; };
+		A90564472BA7E72B007E7731 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90564332BA7E723007E7731 /* ContentView.swift */; };
+		A90564482BA7E72B007E7731 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A90564332BA7E723007E7731 /* ContentView.swift */; };
+		A90564492BA7E72B007E7731 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90564342BA7E72B007E7731 /* Assets.xcassets */; };
+		A905644A2BA7E72B007E7731 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A90564342BA7E72B007E7731 /* Assets.xcassets */; };
+		A980E0812BA9243F007C624E /* IniciarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980E0802BA9243F007C624E /* IniciarSesionView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		A90564322BA7E723007E7731 /* Torneo_ExalApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Torneo_ExalApp.swift; sourceTree = "<group>"; };
+		A90564332BA7E723007E7731 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A90564342BA7E72B007E7731 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A90564392BA7E72B007E7731 /* Torneo Exal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Torneo Exal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A905643C2BA7E72B007E7731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A90564412BA7E72B007E7731 /* Torneo Exal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Torneo Exal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A90564432BA7E72B007E7731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A90564442BA7E72B007E7731 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		A980E0802BA9243F007C624E /* IniciarSesionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciarSesionView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A90564362BA7E72B007E7731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A905643E2BA7E72B007E7731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A905642C2BA7E722007E7731 = {
+			isa = PBXGroup;
+			children = (
+				A90564312BA7E723007E7731 /* Shared */,
+				A905643B2BA7E72B007E7731 /* iOS */,
+				A90564422BA7E72B007E7731 /* macOS */,
+				A905643A2BA7E72B007E7731 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A90564312BA7E723007E7731 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				A980E07F2BA9241C007C624E /* Auth */,
+				A90564322BA7E723007E7731 /* Torneo_ExalApp.swift */,
+				A90564332BA7E723007E7731 /* ContentView.swift */,
+				A90564342BA7E72B007E7731 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		A905643A2BA7E72B007E7731 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A90564392BA7E72B007E7731 /* Torneo Exal.app */,
+				A90564412BA7E72B007E7731 /* Torneo Exal.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A905643B2BA7E72B007E7731 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A905643C2BA7E72B007E7731 /* Info.plist */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		A90564422BA7E72B007E7731 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				A90564432BA7E72B007E7731 /* Info.plist */,
+				A90564442BA7E72B007E7731 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		A980E07F2BA9241C007C624E /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				A980E0802BA9243F007C624E /* IniciarSesionView.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A90564382BA7E72B007E7731 /* Torneo Exal (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A905644D2BA7E72B007E7731 /* Build configuration list for PBXNativeTarget "Torneo Exal (iOS)" */;
+			buildPhases = (
+				A90564352BA7E72B007E7731 /* Sources */,
+				A90564362BA7E72B007E7731 /* Frameworks */,
+				A90564372BA7E72B007E7731 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Torneo Exal (iOS)";
+			productName = "Torneo Exal (iOS)";
+			productReference = A90564392BA7E72B007E7731 /* Torneo Exal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A90564402BA7E72B007E7731 /* Torneo Exal (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A90564502BA7E72B007E7731 /* Build configuration list for PBXNativeTarget "Torneo Exal (macOS)" */;
+			buildPhases = (
+				A905643D2BA7E72B007E7731 /* Sources */,
+				A905643E2BA7E72B007E7731 /* Frameworks */,
+				A905643F2BA7E72B007E7731 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Torneo Exal (macOS)";
+			productName = "Torneo Exal (macOS)";
+			productReference = A90564412BA7E72B007E7731 /* Torneo Exal.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A905642D2BA7E722007E7731 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1240;
+				LastUpgradeCheck = 1240;
+				TargetAttributes = {
+					A90564382BA7E72B007E7731 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+					A90564402BA7E72B007E7731 = {
+						CreatedOnToolsVersion = 12.4;
+					};
+				};
+			};
+			buildConfigurationList = A90564302BA7E722007E7731 /* Build configuration list for PBXProject "Torneo Exal" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A905642C2BA7E722007E7731;
+			productRefGroup = A905643A2BA7E72B007E7731 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A90564382BA7E72B007E7731 /* Torneo Exal (iOS) */,
+				A90564402BA7E72B007E7731 /* Torneo Exal (macOS) */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A90564372BA7E72B007E7731 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90564492BA7E72B007E7731 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A905643F2BA7E72B007E7731 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A905644A2BA7E72B007E7731 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A90564352BA7E72B007E7731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90564472BA7E72B007E7731 /* ContentView.swift in Sources */,
+				A980E0812BA9243F007C624E /* IniciarSesionView.swift in Sources */,
+				A90564452BA7E72B007E7731 /* Torneo_ExalApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A905643D2BA7E72B007E7731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A90564482BA7E72B007E7731 /* ContentView.swift in Sources */,
+				A90564462BA7E72B007E7731 /* Torneo_ExalApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		A905644B2BA7E72B007E7731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A905644C2BA7E72B007E7731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		A905644E2BA7E72B007E7731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marm4.Torneo-Exal";
+				PRODUCT_NAME = "Torneo Exal";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		A905644F2BA7E72B007E7731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = iOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marm4.Torneo-Exal";
+				PRODUCT_NAME = "Torneo Exal";
+				SDKROOT = iphoneos;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A90564512BA7E72B007E7731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marm4.Torneo-Exal";
+				PRODUCT_NAME = "Torneo Exal";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		A90564522BA7E72B007E7731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = macOS/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.marm4.Torneo-Exal";
+				PRODUCT_NAME = "Torneo Exal";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A90564302BA7E722007E7731 /* Build configuration list for PBXProject "Torneo Exal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A905644B2BA7E72B007E7731 /* Debug */,
+				A905644C2BA7E72B007E7731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A905644D2BA7E72B007E7731 /* Build configuration list for PBXNativeTarget "Torneo Exal (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A905644E2BA7E72B007E7731 /* Debug */,
+				A905644F2BA7E72B007E7731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A90564502BA7E72B007E7731 /* Build configuration list for PBXNativeTarget "Torneo Exal (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A90564512BA7E72B007E7731 /* Debug */,
+				A90564522BA7E72B007E7731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A905642D2BA7E722007E7731 /* Project object */;
+}
