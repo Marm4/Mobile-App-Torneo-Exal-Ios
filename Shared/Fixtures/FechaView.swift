@@ -1,17 +1,9 @@
-//
-//  FechaView.swift
-//  Torneo Exal (iOS)
-//
-//  Created by Marco on 20/03/2024.
-//
-
 import SwiftUI
 import Firebase
 
 struct FechaView: View {
     var fixture: Fixture
-    let equiposRef = Database.database().reference().child("equipos")
-    @State private var equipos: [Equipo] = []
+    var equipos: [Equipo]
     
     var body: some View {
         ZStack() {
@@ -19,46 +11,19 @@ struct FechaView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack{
-            
-            
-                ForEach(fixture.getPartidos().map { IdentifiablePartido(partido: $0) }) { identifiablePartido in
-                    ShowPartido(partido: identifiablePartido.partido, equipos: equipos)
-                    Text("Hiola")
+                
+                
+                ForEach(fixture.getPartidos(), id: \.id) { partido in
+                    ShowPartido(partido: partido, equipos: equipos)
                 }
                 Spacer()
             }
             Spacer()
             
-        }.onAppear {
-            devolverEquipos()
-            
         }
         
     }
     
-    func devolverEquipos() {
-        print("Contenido de la fixture:", fixture)
-        equiposRef.observeSingleEvent(of: .value) { (snapshot) in
-            var fetchedEquipos: [Equipo] = []
-            if snapshot.exists() {
-                for equipoSnapshot in snapshot.children {
-                    if let equipoData = (equipoSnapshot as? DataSnapshot)?.value as? [String: Any] {
-                        if let equipo = Equipo(data: equipoData) {
-                            fetchedEquipos.append(equipo)
-                            
-                            print("Contenido de la equpo:", equipo)
-                        }
-                    }
-                }
-            }
-            self.equipos = fetchedEquipos
-        }
-    }
-}
-
-struct IdentifiablePartido: Identifiable {
-    let id = UUID()
-    let partido: Partido
 }
 
 
@@ -80,46 +45,50 @@ private struct ShowPartido: View{
     }
     
     var body: some View{
-
+        
         let golesUno = String(describing: partido.getGolesEquipoUno()?.count ?? 0)
         let golesDos = String(describing: partido.getGolesEquipoDos()?.count ?? 0)
         HStack {
-                   if let equipoUno = equipoUno {
-                       Text(equipoUno.getNombre())
-                           .font(.headline)
-                           .fontWeight(.bold)
-                           .foregroundColor(Color("PrimaryVariation"))
-                           .padding(.all, 15.0)
-                       /*Image(equipoUno.getEscudo() ?? "shield.fill")
-                           .foregroundColor(Color.black)
-                           .padding(.all, 5.0)
-                           .font(.system(size: 32))*/
-                   }
-                   
-                Text("\(golesUno) - \(golesDos)")
-                       .font(.headline)
-                       .fontWeight(.bold)
-                       .foregroundColor(Color.white)
-                       .padding(.all, 10.0)
-                       .background(Color("PrimaryVariation"))
-                       .cornerRadius(5)
-                   
-                   if let equipoDos = equipoDos {
-                       /*Image(equipoDos.escudo ?? "shield.fill")
-                           .foregroundColor(Color.black)
-                           .padding(.all, 5.0)
-                           .font(.system(size: 32))*/
-                       Text(equipoDos.getNombre())
-                           .font(.headline)
-                           .fontWeight(.bold)
-                           .foregroundColor(Color("PrimaryVariation"))
-                           .padding(.all, 15.0)
-                   }
-               }
-               .background(Color.white)
-               .cornerRadius(5)
-               .padding([.vertical], 15)
-       
+            if let equipoUno = equipoUno {
+                Text(equipoUno.getNombre())
+                    .font(.body)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("PrimaryVariation"))
+                    .frame(width: 110.0)
+                    .scaleEffect(0.7)
+                    .multilineTextAlignment(.trailing)
+                equipoUno.getEscudo()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 28))
+                    
+            }
+            
+            Text("\(golesUno) - \(golesDos)")
+                .fontWeight(.bold)
+                .foregroundColor(Color.white)
+                .padding(.all, 10.0)
+                .background(Color("PrimaryVariation"))
+                .cornerRadius(5)
+                .frame(width: 80.0, height: 60.0)
+                .scaleEffect(0.7)
+            
+            if let equipoDos = equipoDos {
+                equipoDos.getEscudo()
+                    .foregroundColor(Color.black)
+                    .font(.system(size: 32))
+                Text(equipoDos.getNombre())
+                    .font(.body)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("PrimaryVariation"))
+                    .multilineTextAlignment(.leading)
+                    .frame(width: 110.0)
+                    .scaleEffect(0.7)
+            }
+        }
+        .background(Color.white)
+        .cornerRadius(5)
+        .padding([.vertical], 15)
+        
     }
     
 }

@@ -33,6 +33,7 @@
 		A96DD7E92BAB996000BD9E84 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7E82BAB996000BD9E84 /* TitleView.swift */; };
 		A96DD7F12BABA1A400BD9E84 /* FechaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7F02BABA1A400BD9E84 /* FechaView.swift */; };
 		A980E0812BA9243F007C624E /* IniciarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980E0802BA9243F007C624E /* IniciarSesionView.swift */; };
+		A984C6F12BACC82F00385EBD /* Torneo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A984C6F02BACC82F00385EBD /* Torneo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		A96DD7E82BAB996000BD9E84 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		A96DD7F02BABA1A400BD9E84 /* FechaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaView.swift; sourceTree = "<group>"; };
 		A980E0802BA9243F007C624E /* IniciarSesionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciarSesionView.swift; sourceTree = "<group>"; };
+		A984C6F02BACC82F00385EBD /* Torneo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Torneo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 				A96DD7DB2BAB89FB00BD9E84 /* Tarjeta.swift */,
 				A96DD7DF2BAB8A4A00BD9E84 /* Usuario.swift */,
 				A96DD7E32BAB8CA800BD9E84 /* Equipo.swift */,
+				A984C6F02BACC82F00385EBD /* Torneo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -296,6 +299,7 @@
 				A96DD7CE2BAB870F00BD9E84 /* Fixture.swift in Sources */,
 				A91F8C1E2BA9EC4D00D9F7F6 /* RegistrarseView.swift in Sources */,
 				A96DD7DC2BAB89FB00BD9E84 /* Tarjeta.swift in Sources */,
+				A984C6F12BACC82F00385EBD /* Torneo.swift in Sources */,
 				A90564452BA7E72B007E7731 /* Torneo_ExalApp.swift in Sources */,
 				A96DD7E92BAB996000BD9E84 /* TitleView.swift in Sources */,
 				A96DD7E02BAB8A4A00BD9E84 /* Usuario.swift in Sources */,

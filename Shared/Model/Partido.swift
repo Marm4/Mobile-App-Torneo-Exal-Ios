@@ -1,9 +1,10 @@
 import Foundation
 
 class Partido{
+    var id: String
     private var diaHora: String
-    private var equipoUnoID: String
-    private var equipoDosID: String
+    private var equipoUno: String
+    private var equipoDos: String
     private var mvp: Jugador?
     private var fixtureId: String
     private var tarjetas: [Tarjeta]?
@@ -11,34 +12,37 @@ class Partido{
     private var golesEquipoDos: [String]?
 
     init(diaHora: String, equipoUnoID: String, equipoDosID: String, mvp: Jugador?, fixtureId: String, tarjetas: [Tarjeta]?, golesEquipoUno: [String]?, golesEquipoDos: [String]?) {
+            self.id = UUID().uuidString // Generar automáticamente un ID único
+            self.diaHora = diaHora
+            self.equipoUno = equipoUnoID
+            self.equipoDos = equipoDosID
+            self.mvp = mvp
+            self.fixtureId = fixtureId
+            self.tarjetas = tarjetas
+            self.golesEquipoUno = golesEquipoUno
+            self.golesEquipoDos = golesEquipoDos
+        }
+        
+    init?(data: [String: Any]) {
+        guard let diaHora = data["diaHora"] as? String,
+              let equipoUno = data["equipoUno"] as? String,
+              let equipoDos = data["equipoDos"] as? String,
+              let fixtureId = data["fixtureId"] as? String,
+              let golesEquipoUno = data["golesEquipoUno"] as? [String],
+              let golesEquipoDos = data["golesEquipoDos"] as? [String]
+        else {
+            return nil
+        }
+        
+        self.id = UUID().uuidString // Generar automáticamente un ID único
         self.diaHora = diaHora
-        self.equipoUnoID = equipoUnoID
-        self.equipoDosID = equipoDosID
-        self.mvp = mvp
+        self.equipoUno = equipoUno
+        self.equipoDos = equipoDos
         self.fixtureId = fixtureId
-        self.tarjetas = tarjetas
         self.golesEquipoUno = golesEquipoUno
         self.golesEquipoDos = golesEquipoDos
     }
     
-    
-    init?(data: [String: Any]) {
-            guard let diaHora = data["diaHora"] as? String,
-                  let equipoUnoID = data["equipoUnoID"] as? String,
-                  let equipoDosID = data["equipoDosID"] as? String,
-                  let fixtureId = data["fixtureId"] as? String else {
-                return nil
-            }
-            
-            self.diaHora = diaHora
-            self.equipoUnoID = equipoUnoID
-            self.equipoDosID = equipoDosID
-            self.fixtureId = fixtureId
-            self.mvp = data["mvp"] as? Jugador
-            self.tarjetas = data["tarjetas"] as? [Tarjeta]
-            self.golesEquipoUno = data["golesEquipoUno"] as? [String]
-            self.golesEquipoDos = data["golesEquipoDos"] as? [String]
-        }
     
 
     convenience init() {
@@ -54,19 +58,19 @@ class Partido{
     }
 
     func getEquipoUno() -> String {
-        return equipoUnoID
+        return equipoUno
     }
 
     func setEquipoUno(equipoUno: String) {
-        self.equipoUnoID = equipoUno
+        self.equipoUno = equipoUno
     }
 
     func getEquipoDos() -> String {
-        return equipoDosID
+        return equipoDos
     }
 
     func setEquipoDos(equipoDos: String) {
-        self.equipoDosID = equipoDos
+        self.equipoDos = equipoDos
     }
 
     func getMvp() -> Jugador? {

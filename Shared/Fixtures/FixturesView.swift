@@ -3,44 +3,27 @@ import Firebase
 
 
 struct FixturesView: View {
-    let fixtureRef = Database.database().reference().child("fixtures")
-    @State private var fixtures: [Fixture] = []
+
+    var torneo: Torneo
     
     var body: some View {
         VStack {
             TitleView(text: "Fixtures")
-            ForEach(fixtures, id: \.id) { fixture in
-                ShowFechaNro(fixture: fixture)
+            ForEach(torneo.getFixtures(), id: \.id) { fixture in
+                ShowFechaNro(fixture: fixture, torneo: torneo)
             }
             Spacer()
         }
-        .onAppear {
-            devolverFixture()
-        }
     }
     
-    func devolverFixture() {
-        fixtureRef.observeSingleEvent(of: .value) { (snapshot) in
-            var fetchedFixtures: [Fixture] = []
-            if snapshot.exists() {
-                for fixtureSnapshot in snapshot.children {
-                    if let fixtureData = (fixtureSnapshot as? DataSnapshot)?.value as? [String: Any] {
-                        if let fixture = Fixture(data: fixtureData) {
-                            fetchedFixtures.append(fixture)
-                        }
-                    }
-                }
-            }
-            self.fixtures = fetchedFixtures
-        }
     }
-}
 
-private struct ShowFechaNro:View{
+private struct ShowFechaNro: View {
     var fixture: Fixture
+    var torneo: Torneo
     
     var body: some View {
-        NavigationLink(destination: FechaView(fixture: fixture)) {
+        NavigationLink(destination: FechaView(fixture: fixture, equipos: torneo.getEquipos())) { 
             HStack {
                 Image(systemName: "calendar")
                     .font(.system(size: 32))
@@ -56,9 +39,10 @@ private struct ShowFechaNro:View{
             }
             .background(Color("Gris"))
             .padding([.horizontal, .vertical], 10)
-        }.navigationBarTitle(fixture.getFechaNro(), displayMode: .inline)
+        }
+        .navigationBarTitle("Fixtures", displayMode: .inline)
         .navigationBarHidden(true)
-        .navigationTitle("Atras")
+        .navigationBarTitle("Atras")
         .navigationBarHidden(true)
     }
 }
