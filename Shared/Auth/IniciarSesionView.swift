@@ -2,58 +2,55 @@ import SwiftUI
 import Firebase
 
 struct IniciarSesionView: View {
-    
-    
+    @Binding  var isLoggedIn: Bool
     var body: some View {
-        MainView()
-        
-    }
-}
-
-
-struct IniciarSesionView_Previews: PreviewProvider {
-    static var previews: some View {
-        IniciarSesionView()
+        MainView(isLoggedIn: $isLoggedIn)
     }
 }
 
 struct MainView: View{
     @State private var email: String = ""
     @State private var contrasenia: String = ""
+    @State private var showProgressBar: Bool = false
+    @State private var showAlert: Bool = false
+    @Binding var isLoggedIn: Bool
     
     var body: some View {
         NavigationView {
             VStack {
-               
-                ZStack(alignment: .top) {
-                    LinearGradient(gradient: Gradient(colors: [Color("Primary"), Color("PrimaryVariation")]), startPoint: .leading, endPoint: .trailing)
-                        .edgesIgnoringSafeArea(.all)
-                        .frame(height: 40)
-                    
-                    Text("Iniciar sesión")
-                        .font(.title2)
-                        .fontWeight(.bold)
-                        .foregroundColor(.white)
-                }
-                
+                TitleView(text:"Iniciar sesión")
                 Spacer()
+                
                 
                 VStack{
                     EmailView(email: $email)
                     ContraseniaView(contrasenia: $contrasenia, type: "Contraseña")
                     
                     Spacer()
+                    Spacer()
                     
+                    ProgressBarView(show: $showProgressBar, message: "Iniciando sesión...")
+                    /*if showProgressBar{
+                        ProgressView("Iniciando sesión...")
+                            .progressViewStyle(CircularProgressViewStyle(tint: Color("PrimaryVariation"))) 
+                            .padding()
+                            .cornerRadius(8)
+                    }*/
+                    Spacer()
+                }.alert(isPresented: $showAlert) {
+                    Alert(title: Text("Error al iniciar sesión"),
+                          message: Text("Hubo un error al iniciar sesión. Por favor, verifica email y contraseña."),
+                          dismissButton: .default(Text("Aceptar")))
                 }
                 
                 
                 VStack {
-                    IniciarSesionOnDatabaseView(email: $email, contrasenia: $contrasenia)
-                    IrAregistrarseView()
+                    IniciarSesionOnDatabaseView(email: $email, contrasenia: $contrasenia, showProgressBar: $showProgressBar, showAlert: $showAlert, isLoggedIn: $isLoggedIn)
+                    IrAregistrarseView(isLoggedIn: $isLoggedIn)
                     
                 }
+                
             }
         }
     }
-    
 }

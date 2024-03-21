@@ -1,15 +1,8 @@
-//
-//  ContentView.swift
-//  Shared
-//
-//  Created by Marco on 17/03/2024.
-//
-
 import SwiftUI
 import FirebaseAuth
 
 struct ContentView: View {
-    @State private var isLoggedIn = true
+    @State private var isLoggedIn = false
     
     init() {
             _isLoggedIn = State(initialValue: Auth.auth().currentUser != nil)
@@ -17,9 +10,9 @@ struct ContentView: View {
     
     var body: some View {
             if isLoggedIn {
-                MainTabView()
+                MainTabView(isLoggedIn: $isLoggedIn)
             } else {
-                IniciarSesionView()
+                IniciarSesionView(isLoggedIn: $isLoggedIn)
             }
         }
     
@@ -33,89 +26,49 @@ struct ContentView_Previews: PreviewProvider {
 
 
 struct MainTabView: View {
+    @Binding var isLoggedIn: Bool
     var body: some View {
         
         TabView{
-            NavigationView {
-                VStack {
-                    CustomTitleView(title: "Partidos")
-                }
-                .navigationBarHidden(true)
-            }
-            .tabItem {
-                Image(systemName: "sportscourt.fill")
-                Text("Partidos")
-            }
+        
+            ItemView(view: AnyView(FixturesView()), imageName: "sportscourt.fill", text: "Partidos")
+            ItemView(view: AnyView(FixturesView()), imageName: "rosette", text: "Posiciones")
+            ItemView(view: AnyView(FixturesView()), imageName: "chart.bar.fill", text: "Estadísticas")
+            ItemView(view: AnyView(FixturesView()), imageName: "calendar", text: "Fixture")
+            ItemView(view: AnyView(FixturesView()), imageName: "shield.fill", text: "Equipos")
             
-            // Pestaña "Posiciones"
-            NavigationView {
-                VStack {
-                    CustomTitleView(title: "Posiciones")
-                }
-                .navigationBarHidden(true)
-            }
-            .tabItem {
-                Image(systemName: "rosette")
-                Text("Posiciones")
-            }
-            
-            // Pestaña "Estadísticas"
-            NavigationView {
-                VStack {
-                    CustomTitleView(title: "Estadísticas")
-                }
-                .navigationBarHidden(true)
-            }
-            .tabItem {
-                Image(systemName: "chart.bar.fill")
-                Text("Estadísticas")
-            }
-            
-            // Pestaña "Más"
-            NavigationView {
-                VStack {
-                    CustomTitleView(title: "Fixture")
-                }
-                .navigationBarHidden(true)
-            }
-            .tabItem {
-                Image(systemName: "calendar")
-                Text("Fixture")
-            }
-            
-            NavigationView {
-                VStack {
-                    CustomTitleView(title: "Equipos")
-                }
-                .navigationBarHidden(true)
-            }
-            .tabItem {
-                Image(systemName: "shield.fill")
-                Text("Equipos")
-            }
         }.navigationBarHidden(true)
         .accentColor(Color("Primary"))
         .background(Color("Primary"))
         .navigationBarHidden(true)
+        
     }
+    
+    func signOut() {
+            do {
+                try Auth.auth().signOut()
+                isLoggedIn = false
+            } catch let error as NSError {
+                print("Error al cerrar sesión: \(error.localizedDescription)")
+            }
+        }
 }
-
-
-struct CustomTitleView: View {
-    let title: String
+    
+struct ItemView: View {
+    var view: AnyView
+    var imageName: String
+    var text: String
     
     var body: some View {
-        ZStack(alignment: .top) {
-            LinearGradient(gradient: Gradient(colors: [Color("Primary"), Color("PrimaryVariation")]), startPoint: .leading, endPoint: .trailing)
-                .edgesIgnoringSafeArea(.all)
-                .frame(height: 60)
-            
-            Text(title)
-                .font(.title)
-                .fontWeight(.bold)
-                .foregroundColor(.white) // Color del texto
-                .padding(.top, 20)
+        NavigationView {
+            VStack {
+                view
+            }
+            .navigationBarHidden(true)
+        }
+        .tabItem {
+            Image(systemName: imageName)
+            Text(text)
         }
     }
 }
-

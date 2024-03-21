@@ -23,6 +23,15 @@
 		A91F8C352BA9F5CC00D9F7F6 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = A91F8C342BA9F5CC00D9F7F6 /* FirebaseCrashlytics */; };
 		A91F8C372BA9F5CC00D9F7F6 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = A91F8C362BA9F5CC00D9F7F6 /* FirebaseAuth */; };
 		A91F8C3F2BAA1B2700D9F7F6 /* AuthViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = A91F8C3E2BAA1B2700D9F7F6 /* AuthViews.swift */; };
+		A96DD7C72BAB862600BD9E84 /* FixturesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7C62BAB862600BD9E84 /* FixturesView.swift */; };
+		A96DD7CE2BAB870F00BD9E84 /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7CD2BAB870F00BD9E84 /* Fixture.swift */; };
+		A96DD7D42BAB87BB00BD9E84 /* Partido.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7D32BAB87BB00BD9E84 /* Partido.swift */; };
+		A96DD7D82BAB89A300BD9E84 /* Jugador.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7D72BAB89A300BD9E84 /* Jugador.swift */; };
+		A96DD7DC2BAB89FB00BD9E84 /* Tarjeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7DB2BAB89FB00BD9E84 /* Tarjeta.swift */; };
+		A96DD7E02BAB8A4A00BD9E84 /* Usuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7DF2BAB8A4A00BD9E84 /* Usuario.swift */; };
+		A96DD7E42BAB8CA800BD9E84 /* Equipo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7E32BAB8CA800BD9E84 /* Equipo.swift */; };
+		A96DD7E92BAB996000BD9E84 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7E82BAB996000BD9E84 /* TitleView.swift */; };
+		A96DD7F12BABA1A400BD9E84 /* FechaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A96DD7F02BABA1A400BD9E84 /* FechaView.swift */; };
 		A980E0812BA9243F007C624E /* IniciarSesionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A980E0802BA9243F007C624E /* IniciarSesionView.swift */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +47,15 @@
 		A91F8C1D2BA9EC4D00D9F7F6 /* RegistrarseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrarseView.swift; sourceTree = "<group>"; };
 		A91F8C212BA9F21700D9F7F6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A91F8C3E2BAA1B2700D9F7F6 /* AuthViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViews.swift; sourceTree = "<group>"; };
+		A96DD7C62BAB862600BD9E84 /* FixturesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FixturesView.swift; sourceTree = "<group>"; };
+		A96DD7CD2BAB870F00BD9E84 /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
+		A96DD7D32BAB87BB00BD9E84 /* Partido.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partido.swift; sourceTree = "<group>"; };
+		A96DD7D72BAB89A300BD9E84 /* Jugador.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Jugador.swift; sourceTree = "<group>"; };
+		A96DD7DB2BAB89FB00BD9E84 /* Tarjeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tarjeta.swift; sourceTree = "<group>"; };
+		A96DD7DF2BAB8A4A00BD9E84 /* Usuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usuario.swift; sourceTree = "<group>"; };
+		A96DD7E32BAB8CA800BD9E84 /* Equipo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Equipo.swift; sourceTree = "<group>"; };
+		A96DD7E82BAB996000BD9E84 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		A96DD7F02BABA1A400BD9E84 /* FechaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FechaView.swift; sourceTree = "<group>"; };
 		A980E0802BA9243F007C624E /* IniciarSesionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniciarSesionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -80,6 +98,9 @@
 		A90564312BA7E723007E7731 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				A96DD7E72BAB994F00BD9E84 /* GlobalsViews */,
+				A96DD7CC2BAB86EF00BD9E84 /* Model */,
+				A96DD7C52BAB85EC00BD9E84 /* Fixtures */,
 				A980E07F2BA9241C007C624E /* Auth */,
 				A90564322BA7E723007E7731 /* Torneo_ExalApp.swift */,
 				A90564332BA7E723007E7731 /* ContentView.swift */,
@@ -112,6 +133,36 @@
 				A90564442BA7E72B007E7731 /* macOS.entitlements */,
 			);
 			path = macOS;
+			sourceTree = "<group>";
+		};
+		A96DD7C52BAB85EC00BD9E84 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				A96DD7C62BAB862600BD9E84 /* FixturesView.swift */,
+				A96DD7F02BABA1A400BD9E84 /* FechaView.swift */,
+			);
+			path = Fixtures;
+			sourceTree = "<group>";
+		};
+		A96DD7CC2BAB86EF00BD9E84 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A96DD7CD2BAB870F00BD9E84 /* Fixture.swift */,
+				A96DD7D32BAB87BB00BD9E84 /* Partido.swift */,
+				A96DD7D72BAB89A300BD9E84 /* Jugador.swift */,
+				A96DD7DB2BAB89FB00BD9E84 /* Tarjeta.swift */,
+				A96DD7DF2BAB8A4A00BD9E84 /* Usuario.swift */,
+				A96DD7E32BAB8CA800BD9E84 /* Equipo.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		A96DD7E72BAB994F00BD9E84 /* GlobalsViews */ = {
+			isa = PBXGroup;
+			children = (
+				A96DD7E82BAB996000BD9E84 /* TitleView.swift */,
+			);
+			path = GlobalsViews;
 			sourceTree = "<group>";
 		};
 		A980E07F2BA9241C007C624E /* Auth */ = {
@@ -234,11 +285,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A96DD7D82BAB89A300BD9E84 /* Jugador.swift in Sources */,
 				A90564472BA7E72B007E7731 /* ContentView.swift in Sources */,
+				A96DD7E42BAB8CA800BD9E84 /* Equipo.swift in Sources */,
 				A980E0812BA9243F007C624E /* IniciarSesionView.swift in Sources */,
+				A96DD7C72BAB862600BD9E84 /* FixturesView.swift in Sources */,
+				A96DD7D42BAB87BB00BD9E84 /* Partido.swift in Sources */,
+				A96DD7F12BABA1A400BD9E84 /* FechaView.swift in Sources */,
 				A91F8C3F2BAA1B2700D9F7F6 /* AuthViews.swift in Sources */,
+				A96DD7CE2BAB870F00BD9E84 /* Fixture.swift in Sources */,
 				A91F8C1E2BA9EC4D00D9F7F6 /* RegistrarseView.swift in Sources */,
+				A96DD7DC2BAB89FB00BD9E84 /* Tarjeta.swift in Sources */,
 				A90564452BA7E72B007E7731 /* Torneo_ExalApp.swift in Sources */,
+				A96DD7E92BAB996000BD9E84 /* TitleView.swift in Sources */,
+				A96DD7E02BAB8A4A00BD9E84 /* Usuario.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

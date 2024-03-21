@@ -4,45 +4,51 @@ import Firebase
 struct IniciarSesionOnDatabaseView: View {
     @Binding var email: String
     @Binding var contrasenia: String
+    @Binding var showProgressBar: Bool
+    @Binding var showAlert: Bool
+    @Binding var isLoggedIn: Bool
     @State private var navigateToContentView = false
     
+    
     var body: some View {
-        NavigationLink(destination: ContentView(), isActive: $navigateToContentView) {
-            EmptyView()
-        }
-        .hidden()
-        .onAppear {
-            signIn(email: email, password: contrasenia)
-        }
-        .buttonStyle(MyButtonStyle())
+        VStack {
+            Button(action: signIn) {
+                Text("Iniciar sesión")
+                    .fontWeight(.semibold)
+                    .foregroundColor(.white)
+                    .multilineTextAlignment(.center)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 50.0)
+                    .background(Color("PrimaryVariation"))
+                    .cornerRadius(5)
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 5)
+            }
+        }.navigationBarHidden(true)
     }
     
-    func signIn(email: String, password: String) {
-        Auth.auth().signIn(withEmail: email, password: password) { authResult, error in
+    func signIn() {
+        showProgressBar = true
+        Auth.auth().signIn(withEmail: email, password: contrasenia) { authResult, error in
             if let error = error {
                 print("Error al iniciar sesión: \(error.localizedDescription)")
+                showProgressBar = false
+                showAlert = true
             } else {
                 print("Inicio de sesión exitoso para el usuario: \(authResult?.user.uid ?? "Unknown")")
                 navigateToContentView = true
+                showProgressBar = false
+                isLoggedIn = true
             }
         }
     }
 }
 
-struct MyButtonStyle: ButtonStyle {
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .padding()
-            .foregroundColor(.white)
-            .background(Color("PrimaryVariation"))
-            .cornerRadius(5)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 5)
-    }
-}
+
 struct IrAregistrarseView:View{
+    @Binding var isLoggedIn: Bool
     var body: some View{
-        NavigationLink(destination: RegistrarseView()) {
+        NavigationLink(destination: RegistrarseView(isLoggedIn: $isLoggedIn)) {
             Text("Registrarse")
                 .fontWeight(.semibold)
                 .foregroundColor(.white)
@@ -137,6 +143,21 @@ struct ContraseniaView:View{
                     .padding(.trailing)
             }
         }
+    }
+}
+
+struct ProgressBarView:View{
+    @Binding var show: Bool
+    var message: String
+    
+    var body: some View{
+        if show{
+            ProgressView(message)
+                .progressViewStyle(CircularProgressViewStyle(tint: Color("PrimaryVariation")))
+                .padding()
+                .cornerRadius(8)
+        }
+        
     }
 }
 
