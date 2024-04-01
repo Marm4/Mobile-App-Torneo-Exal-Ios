@@ -1,52 +1,61 @@
 import Foundation
 
 class Partido{
-    var id: String
-    private var diaHora: String
-    private var equipoUno: String
-    private var equipoDos: String
-    private var mvp: Jugador?
-    private var fixtureId: String
-    private var tarjetas: [Tarjeta]?
-    private var golesEquipoUno: [String]?
-    private var golesEquipoDos: [String]?
+    var id: String = UUID().uuidString
+    private var diaHora: String = ""
+    private var equipoUno: String = ""
+    private var equipoDos: String = ""
+    private var mvp: Jugador? = nil
+    private var fixtureId: String = ""
+    private var tarjetas: [Tarjeta]? = nil
+    private var golesEquipoUno: [String]? = nil
+    private var golesEquipoDos: [String]? = nil
 
-    init(diaHora: String, equipoUnoID: String, equipoDosID: String, mvp: Jugador?, fixtureId: String, tarjetas: [Tarjeta]?, golesEquipoUno: [String]?, golesEquipoDos: [String]?) {
-            self.id = UUID().uuidString // Generar automáticamente un ID único
+    
+    init?(data: [String: Any]) {
+        self.id = UUID().uuidString
+        if let diaHora = data["diaHora"] as? String{
             self.diaHora = diaHora
-            self.equipoUno = equipoUnoID
-            self.equipoDos = equipoDosID
-            self.mvp = mvp
+        }
+       
+        if let equipoUno = data["equipoUno"] as? String{
+            self.equipoUno = equipoUno
+        }
+        if let equipoDos = data["equipoDos"] as? String{
+            self.equipoDos = equipoDos
+        }
+        
+        if let fixtureId = data["fixtureId"] as? String{
             self.fixtureId = fixtureId
-            self.tarjetas = tarjetas
+        }
+        
+        if let golesEquipoUno = data["golesEquipoUno"] as? [String]{
             self.golesEquipoUno = golesEquipoUno
+        }
+        
+        if let golesEquipoDos = data["golesEquipoDos"] as? [String] {
             self.golesEquipoDos = golesEquipoDos
         }
+
+
         
-    init?(data: [String: Any]) {
-        guard let diaHora = data["diaHora"] as? String,
-              let equipoUno = data["equipoUno"] as? String,
-              let equipoDos = data["equipoDos"] as? String,
-              let fixtureId = data["fixtureId"] as? String,
-              let golesEquipoUno = data["golesEquipoUno"] as? [String],
-              let golesEquipoDos = data["golesEquipoDos"] as? [String]
-        else {
-            return nil
+        if let tarjetasData = data["tarjetas"] as? [[String: Any]] {
+            var tarjetasArray: [Tarjeta] = []
+            for tarjetaData in tarjetasData {
+                if let tarjeta = Tarjeta(data: tarjetaData) {
+                    tarjetasArray.append(tarjeta)
+                }
+            }
+            self.tarjetas = tarjetasArray
         }
         
-        self.id = UUID().uuidString // Generar automáticamente un ID único
-        self.diaHora = diaHora
-        self.equipoUno = equipoUno
-        self.equipoDos = equipoDos
-        self.fixtureId = fixtureId
-        self.golesEquipoUno = golesEquipoUno
-        self.golesEquipoDos = golesEquipoDos
-    }
-    
-    
-
-    convenience init() {
-        self.init(diaHora: "", equipoUnoID: "", equipoDosID: "", mvp: nil, fixtureId: "", tarjetas: nil, golesEquipoUno: nil, golesEquipoDos: nil)
+        if let mvpData = data["mvp"] as? [String: Any] {
+            if let mvp = Jugador(data: mvpData) {
+                self.mvp = mvp
+            } else {
+                self.mvp = nil
+            }
+        }
     }
 
     func getDiaHora() -> String {
@@ -157,6 +166,25 @@ class Partido{
     func removeTarjeta(tarjeta: Tarjeta) {
         if let index = tarjetas?.firstIndex(where: { $0 === tarjeta }) {
             tarjetas?.remove(at: index)
+        }
+    }
+    
+    func isPartidoJugado() -> Bool{
+        let fechaActual = Date()
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm"
+        if let fechaAlmacenada = dateFormatter.date(from: diaHora) {
+            // Comparar las fechas
+            if fechaAlmacenada > fechaActual {
+                return false
+            } else if fechaAlmacenada < fechaActual {
+                return true
+            } else {
+                return false
+            }
+        } else {
+            return false
         }
     }
 }

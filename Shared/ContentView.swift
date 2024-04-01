@@ -8,38 +8,55 @@ struct ContentView: View {
     
     init() {
         _isLoggedIn = State(initialValue: Auth.auth().currentUser != nil)
-        }
+    }
     
     
     var body: some View {
-            if isLoggedIn {
-                if torneoLoaded {
-                    MainTabView(isLoggedIn: $isLoggedIn, torneo: torneo)
-                } else {
-                    ProgressView()
-                        .onAppear {
-                            loadTorneoData()
-                        }
-                }
+        if isLoggedIn {
+            if torneoLoaded {
+                MainTabView(isLoggedIn: $isLoggedIn, torneo: torneo)
+                    .navigationBarTitle("", displayMode: .inline)
+                    .navigationBarHidden(true)
+
+                    
             } else {
-                IniciarSesionView(isLoggedIn: $isLoggedIn)
+                ProgressView()
+                    .navigationBarTitle("", displayMode: .inline)
+                    .navigationBarHidden(true)
+                    .onAppear {
+                        loadTorneoData()
+                    }
+                    
             }
+        } else {
+            IniciarSesionView(isLoggedIn: $isLoggedIn)
+                .navigationBarTitle("", displayMode: .inline)
+                .navigationBarHidden(true)
+                
         }
+        
+        
+    }
     
     private func loadTorneoData() {
-            let dispatchGroup = DispatchGroup()
-            dispatchGroup.enter()
-            torneo.findFixtures() {
-                dispatchGroup.leave()
-            }
-            dispatchGroup.enter()
-            torneo.findEquipos() {
-                dispatchGroup.leave()
-            }
-            dispatchGroup.notify(queue: .main) {
-                self.torneoLoaded = true
-            }
+        let dispatchGroup = DispatchGroup()
+        dispatchGroup.enter()
+        torneo.findFixtures() {
+            dispatchGroup.leave()
         }
+        dispatchGroup.enter()
+        torneo.findEquipos() {
+            dispatchGroup.leave()
+        }
+        dispatchGroup.enter()
+        torneo.findProximaFecha() {
+            dispatchGroup.leave()
+        }
+        dispatchGroup.notify(queue: .main) {
+            self.torneoLoaded = true
+        }
+    }
+   
 }
 
 
@@ -58,40 +75,52 @@ struct MainTabView: View {
     var body: some View {
         
         TabView{
-        
-            ItemView(view: AnyView(FixturesView(torneo: torneo)), imageName: "sportscourt.fill", text: "Partidos")
-            ItemView(view: AnyView(FixturesView(torneo: torneo)), imageName: "rosette", text: "Posiciones")
-            ItemView(view: AnyView(FixturesView(torneo: torneo)), imageName: "chart.bar.fill", text: "Estadísticas")
+            ItemView(view: AnyView(FechaView(fixture: proximaFecha()!, equipos: torneo.getEquipos())), imageName: "sportscourt.fill", text: "Partidos")
+            ItemView(view: AnyView(PosicionesView(torneo: torneo)), imageName: "rosette", text: "Posiciones")
+            ItemView(view: AnyView(GeneralesView(torneo: torneo)), imageName: "chart.bar.fill", text: "Estadísticas")
             ItemView(view: AnyView(FixturesView(torneo: torneo)), imageName: "calendar", text: "Fixture")
-            ItemView(view: AnyView(FixturesView(torneo: torneo)), imageName: "shield.fill", text: "Equipos")
+            ItemView(view: AnyView(BuscarEquiposView(equipos: torneo.getEquipos(), fixtures: torneo.getFixtures())), imageName: "shield.fill", text: "Equipos")
             
-        }.navigationBarHidden(true)
+        }
         .accentColor(Color("Primary"))
         .background(Color("Primary"))
+        .navigationBarTitle("")
         .navigationBarHidden(true)
+       
+        
         
     }
     
-    func signOut() {
-            do {
-                try Auth.auth().signOut()
-                isLoggedIn = false
-            } catch let error as NSError {
-                print("Error al cerrar sesión: \(error.localizedDescription)")
+    func proximaFecha() -> Fixture? {
+        for fixture in torneo.getFixtures() {
+            if fixture.id == torneo.proximaFecha {
+                return fixture
             }
         }
-}
+        return nil
+    }
     
+    func signOut() {
+        do {
+            try Auth.auth().signOut()
+            isLoggedIn = false
+        } catch let error as NSError {
+            print("Error al cerrar sesión: \(error.localizedDescription)")
+        }
+    }
+}
+
 struct ItemView: View {
     var view: AnyView
     var imageName: String
     var text: String
-    
+    @State var isNavigationBarHidden: Bool = true
     var body: some View {
         NavigationView {
             VStack {
                 view
             }
+            .navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
         }
         .tabItem {

@@ -2,7 +2,7 @@ import Foundation
 import SwiftUI
 
 class Equipo : ObservableObject{
-    var id: String?
+    var id: String
     private var nombre: String
     private var escudo: Image?
     private var urlEscudo: String?
@@ -11,11 +11,12 @@ class Equipo : ObservableObject{
     private var colores: [Int]?
     
     init() {
-        self.id = nil
+        self.id = ""
         self.nombre = ""
     }
     
     init(nombre: String, jugadores: [Jugador]?, partidos: [Partido]?) {
+        self.id = ""
         self.nombre = nombre
         self.jugadores = jugadores
         self.partidos = partidos
@@ -31,16 +32,30 @@ class Equipo : ObservableObject{
     }
     
     init?(data: [String: Any]) {
-        guard let nombre = data["nombre"] as? String else {
+        guard let nombre = data["nombre"] as? String,
+              let id = data["id"] as? String
+        else {
             return nil
         }
         
         self.nombre = nombre
-        self.id = data["id"] as? String
+        self.id = id
         self.urlEscudo = data["urlEscudo"] as? String
-        self.jugadores = data["jugadores"] as? [Jugador]
         self.partidos = data["partidos"] as? [Partido]
         self.colores = data["colores"] as? [Int]
+        
+        guard let jugadoresData = data["jugadores"] as? [[String: Any]] else {
+                return nil
+            }
+
+        var jugadoresArray: [Jugador] = []
+        for jugadorData in jugadoresData {
+            if let jugador = Jugador(data: jugadorData) {
+                jugadoresArray.append(jugador)
+            }
+        }
+        self.jugadores = jugadoresArray
+        
        
         if let urlString = urlEscudo {
             loadImage(from: urlString)

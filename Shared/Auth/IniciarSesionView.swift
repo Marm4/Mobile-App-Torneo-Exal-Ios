@@ -30,12 +30,7 @@ struct MainView: View{
                     Spacer()
                     
                     ProgressBarView(show: $showProgressBar, message: "Iniciando sesión...")
-                    /*if showProgressBar{
-                        ProgressView("Iniciando sesión...")
-                            .progressViewStyle(CircularProgressViewStyle(tint: Color("PrimaryVariation"))) 
-                            .padding()
-                            .cornerRadius(8)
-                    }*/
+        
                     Spacer()
                 }.alert(isPresented: $showAlert) {
                     Alert(title: Text("Error al iniciar sesión"),
@@ -52,5 +47,7 @@ struct MainView: View{
                 
             }
         }
+        .navigationBarTitle("4", displayMode: .inline)
+        
     }
 }
