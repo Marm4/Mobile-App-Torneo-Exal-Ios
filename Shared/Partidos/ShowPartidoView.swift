@@ -97,9 +97,9 @@ struct ShowPartidoWithNavView: View {
         let golesDos = String(describing: partido.getGolesEquipoDos()?.count ?? 0)
         
         NavigationLink(destination: PartidoView(partido: partido, equipoUno: equipoUno!, equipoDos: equipoDos!)) {
-            GeometryReader { geometry in
-                let widthList: [CGFloat] = [geometry.size.width * 0.30, geometry.size.width * 1, geometry.size.width * 0.13]
-                
+            /*GeometryReader { geometry in*/
+                //let widthList: [CGFloat] = [geometry.size.width * 0.30, geometry.size.width * 1, geometry.size.width * 0.13]
+        let widthList: [CGFloat] = [110, 200, 60]
                 HStack() {
                     if let equipoUno = equipoUno {
                         HStack{
@@ -143,16 +143,16 @@ struct ShowPartidoWithNavView: View {
                             Spacer()
                         }.frame(width:widthList[0])
                     }
+                    
                 }
                 .background(Color.white)
                 .cornerRadius(5)
-                
-                .frame(width:widthList[1])
+                .frame(width:widthList[1], height: 80)
+            
                 
             }
-        }
-        .navigationBarTitle("Partidos", displayMode: .inline)
-        .navigationBarHidden(true)
+            .navigationBarTitle("Partidos", displayMode: .inline)
+            .navigationBarHidden(true)
         
     }
     

@@ -40,20 +40,53 @@ struct ContentView: View {
     
     private func loadTorneoData() {
         let dispatchGroup = DispatchGroup()
+        var equiposLoaded = false
+        var imagesLoaded = false
+
+       
         dispatchGroup.enter()
-        torneo.findFixtures() {
+        torneo.findEquipos {
+            equiposLoaded = true
             dispatchGroup.leave()
         }
-        dispatchGroup.enter()
-        torneo.findEquipos() {
-            dispatchGroup.leave()
-        }
-        dispatchGroup.enter()
-        torneo.findProximaFecha() {
-            dispatchGroup.leave()
-        }
+
+       
         dispatchGroup.notify(queue: .main) {
-            self.torneoLoaded = true
+            if equiposLoaded {
+                for equipo in torneo.getEquipos() {
+                    dispatchGroup.enter()
+                    if let urlEscudo = equipo.getUrlEscudo(){
+                        equipo.loadImage(from: urlEscudo) {
+                            dispatchGroup.leave()
+                        }
+                    }
+                    else{
+                        dispatchGroup.leave()
+                    }
+                    
+                }
+
+               
+                dispatchGroup.notify(queue: .main) {
+                    imagesLoaded = true
+                }
+
+                dispatchGroup.notify(queue: .main) {
+                    if imagesLoaded {
+                        dispatchGroup.enter()
+                        torneo.findFixtures() {
+                            dispatchGroup.leave()
+                        }
+                        dispatchGroup.enter()
+                        torneo.findProximaFecha() {
+                            dispatchGroup.leave()
+                        }
+                        dispatchGroup.notify(queue: .main) {
+                            self.torneoLoaded = true
+                        }
+                    }
+                }
+            }
         }
     }
    
@@ -75,7 +108,7 @@ struct MainTabView: View {
     var body: some View {
         
         TabView{
-            ItemView(view: AnyView(FechaView(fixture: proximaFecha()!, equipos: torneo.getEquipos())), imageName: "sportscourt.fill", text: "Partidos")
+            /*ItemView(view: AnyView(FechaView(fixture: proximaFecha()!, equipos: torneo.getEquipos())), imageName: "sportscourt.fill", text: "Partidos")*/
             ItemView(view: AnyView(PosicionesView(torneo: torneo)), imageName: "rosette", text: "Posiciones")
             ItemView(view: AnyView(GeneralesView(torneo: torneo)), imageName: "chart.bar.fill", text: "Estadísticas")
             ItemView(view: AnyView(FixturesView(torneo: torneo)), imageName: "calendar", text: "Fixture")
@@ -119,10 +152,11 @@ struct ItemView: View {
         NavigationView {
             VStack {
                 view
-            }
-            .navigationBarTitle("", displayMode: .inline)
+            }.navigationBarTitle("", displayMode: .inline)
             .navigationBarHidden(true)
         }
+        .navigationBarTitle("", displayMode: .inline)
+        .navigationBarHidden(true)
         .tabItem {
             Image(systemName: imageName)
             Text(text)

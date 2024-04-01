@@ -24,13 +24,7 @@ struct RegistrarseView: View {
                     Spacer()
                     
                     ProgressBarView(show: $showProgressBar, message: "Creando usuario...")
-                    /*if showProgressBar{
-                        ProgressView("Creando usuario...")
-                            .progressViewStyle(CircularProgressViewStyle(tint: Color("PrimaryVariation")))
-                            .padding()
-                            .cornerRadius(8)
-                    }
-                    */
+                  
                     Spacer()
                     
                 }.alert(isPresented: $showAlert) {

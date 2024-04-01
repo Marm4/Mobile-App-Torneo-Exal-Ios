@@ -32,6 +32,6 @@ struct ShowViewList: View {
             .padding([.horizontal, .vertical], 10)
         }
         .navigationBarTitle(navBarTitle, displayMode: .inline)
-        .navigationBarHidden(true)
+        //.navigationBarHidden(true)
     }
 }

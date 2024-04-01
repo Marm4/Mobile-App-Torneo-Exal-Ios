@@ -202,16 +202,10 @@ private struct EncabezadoView : View{
         ZStack(alignment: .top) {
             LinearGradient(gradient: Gradient(colors: [Color("Primary"), Color("PrimaryVariation")]), startPoint: .leading, endPoint: .trailing)
                 .edgesIgnoringSafeArea(.all)
-                .frame(height: 150)
+                .frame(height: 120)
             
             VStack{
-                Text(perfilEquipo.equipo.getNombre())
-                    .font(.body)
-                    .padding([.leading, .bottom])
-                    .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-                    .foregroundColor(.white)
-            
-            
+
                 HStack{
                     perfilEquipo.equipo.getEscudo()
                         .resizable()
@@ -231,7 +225,7 @@ private struct EncabezadoView : View{
                 .cornerRadius(5)
                 
                 
-            }.padding(.horizontal)
+            }.padding(.all)
             
             
             
@@ -245,8 +239,8 @@ private struct TextViewEquipo : View{
     var text: String
     var body: some View{
         VStack{
-            Text(puntos).scaleEffect(0.7)
-            Text(text).scaleEffect(0.7)
+            Text(puntos).scaleEffect(0.6)
+            Text(text).scaleEffect(0.6)
         }.padding(.horizontal)
     }
 }

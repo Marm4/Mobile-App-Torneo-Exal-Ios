@@ -57,20 +57,22 @@ class Equipo : ObservableObject{
         self.jugadores = jugadoresArray
         
        
-        if let urlString = urlEscudo {
+        /*if let urlString = urlEscudo {
             loadImage(from: urlString)
-        }
+        }*/
     }
     
     
     
-    func loadImage(from urlString: String) {
+    func loadImage(from urlString: String, completion: @escaping () -> Void) {
         if let imageUI = loadImageFromFile(filename: urlString) {
             escudo = Image(uiImage: imageUI)
             print("Escudo cargado exitosamente")
+            completion()
         } else {
             if escudo == nil{
                 guard let url = URL(string: urlString) else {
+                    completion()
                     return
                 }
                 
@@ -83,6 +85,7 @@ class Equipo : ObservableObject{
                             self.saveImageToFile(image: uiImage, filename: urlString)
                         }
                     }
+                    completion()
                 }
             }
         }

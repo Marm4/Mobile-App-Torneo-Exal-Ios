@@ -14,6 +14,7 @@ struct PartidoView: View {
                 VStack{
                     Spacer()
                     ShowPartidoView(partido: partido, equipoUno: equipoUno, equipoDos: equipoDos)
+                        .padding(.top, 10)
                     
                     Text("Estadisticas")
                         .font(.body)
@@ -22,7 +23,7 @@ struct PartidoView: View {
                         .scaleEffect(0.7)
                 }
                 
-            }.frame(height: 120)
+            }.frame(height: 110)
             
             
             HStack{
